@@ -1,6 +1,10 @@
 import axios from "axios";
 
-const API_URL = "https://farmer-rice-backend.vercel.app/api"
+// Read from Vite env var first, fall back to the hosted backend.
+// Set VITE_API_URL in frontend/.env.local for local dev, e.g.:
+//   VITE_API_URL=http://localhost:5000/api
+const API_URL =
+  import.meta.env.VITE_API_URL || "https://farmer-rice-backend.vercel.app/api";
 
 const axiosInstance = axios.create({
   baseURL: API_URL,

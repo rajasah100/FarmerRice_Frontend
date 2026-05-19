@@ -28,6 +28,7 @@ const StatCard = ({ icon: Icon, label, value, sub, color }) => (
 const Dashboard = () => {
   const [stats, setStats] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchStats = async () => {
@@ -35,7 +36,13 @@ const Dashboard = () => {
         const { data } = await dashboardAPI.getStats();
         setStats(data.data);
       } catch (err) {
-        console.error(err);
+        console.error("Dashboard stats error:", err);
+        const detail =
+          err.response?.data?.message ||
+          err.message ||
+          "Unknown error while fetching stats";
+        const status = err.response?.status;
+        setError(status ? `${status}: ${detail}` : detail);
       } finally {
         setLoading(false);
       }
@@ -52,7 +59,12 @@ const Dashboard = () => {
   if (!stats) {
     return (
       <div className="text-center py-20 text-red-700">
-        Failed to load dashboard stats
+        <p className="font-semibold">Failed to load dashboard stats</p>
+        {error && (
+          <p className="text-sm mt-2 text-red-600 max-w-xl mx-auto break-words">
+            {error}
+          </p>
+        )}
       </div>
     );
   }

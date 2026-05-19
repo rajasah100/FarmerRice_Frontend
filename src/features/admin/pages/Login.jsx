@@ -71,7 +71,7 @@ const Login = () => {
                   onChange={(e) =>
                     setCredentials({ ...credentials, email: e.target.value })
                   }
-                  placeholder="admin@farmerrice.com"
+                  placeholder="Email"
                   className="w-full pl-12 pr-4 py-3 rounded-lg border border-[#e3d4c1] bg-[#fff9f0] text-[#6d513d] placeholder-[#c4a888] focus:outline-none focus:ring-2 focus:ring-[#7b5a42]/30 focus:border-[#7b5a42] transition"
                 />
               </div>
@@ -114,11 +114,7 @@ const Login = () => {
             </button>
           </form>
 
-          <div className="mt-6 p-4 bg-[#f8f3ec] rounded-lg text-xs text-[#7a6656]">
-            <p className="font-semibold mb-1">Default credentials (after seeding):</p>
-            <p>Email: admin@farmerrice.com</p>
-            <p>Password: admin123</p>
-          </div>
+          
         </div>
 
         <p className="text-center text-[#9a7c63] text-sm mt-6">
