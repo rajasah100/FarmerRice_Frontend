@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "https://farmerrice-backend-1.onrender.com/api"
+const API_URL = "https://farmer-rice-backend.vercel.app/api"
 
 const axiosInstance = axios.create({
   baseURL: API_URL,
